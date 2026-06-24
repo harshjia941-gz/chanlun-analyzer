@@ -1176,6 +1176,33 @@ def analyze(df: pd.DataFrame, pen_mode: str = "new") -> dict:
         },
     }
 
+    # RUO-384: pen_to_segment_ratio in data_quality
+    compute_status["data_quality"]["pen_to_segment_ratio"] = (
+        round(len(pens) / len(segments), 1) if segments else None
+    )
+
+    # RUO-384: current_state in compute_status
+    if pivots:
+        latest_pv = pivots[-1]
+        current_price = float(df["close"].iloc[-1])
+        if current_price > latest_pv.ZG:
+            _pos = "above_ZG"
+        elif current_price < latest_pv.ZD:
+            _pos = "below_ZD"
+        else:
+            _pos = "inside_center"
+        compute_status["current_state"] = {
+            "price": round(current_price, 2),
+            "position_vs_pivot": _pos,
+            "nearest_ZG": round(float(latest_pv.ZG), 2),
+            "nearest_ZD": round(float(latest_pv.ZD), 2),
+            "last_segment_direction": (
+                segments[-1].direction if segments else None
+            ),
+        }
+    else:
+        compute_status["current_state"] = None
+
     return {
         "summary": {
             "total_klines": len(df),
