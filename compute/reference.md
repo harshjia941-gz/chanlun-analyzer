@@ -1,3 +1,6 @@
+> ⚠️ REFERENCE ONLY — 本文件为知识参考，非 Agent 执行入口。正常分析请调用 scripts/ 下的可执行模块。仅在模块返回异常时查阅此文档排查。
+>
+
 # Compute Layer — Execution Guide
 
 > Loaded when the Agent needs to **execute or interpret** chanlun computation.
