@@ -42,11 +42,23 @@ RETURN audit_report
 | | |
 |---|---|
 | **Input** | `trade_level`, `confirm_level`, `trigger_level` (operator-declared strings) |
-| **Check** | All three fields are non-empty and follow the level hierarchy: `trade_level > confirm_level > trigger_level` |
+| **Check** | All three fields are non-empty and follow the level hierarchy: `confirm_level` (coarsest, e.g. W) > `trade_level` (operating, e.g. D) > `trigger_level` (finest, e.g. 60F) |
 | **Valid levels** | `1F, 5F, 15F, 30F, 60F, D, W, M` |
 | **Pass** | All three present and hierarchically consistent |
-| **Fail** | Any missing, or hierarchy violated (e.g., `trigger_level > confirm_level`) |
+| **Fail** | Any missing, or hierarchy violated (e.g., `trigger_level` coarser than `confirm_level`, or `trade_level` finer than `trigger_level`) |
 | **On fail** | Return `definition_mode: "untradable_unclear"`, stop audit |
+
+#### Single-Level Mode
+
+When only one timeframe of data is available (e.g., Daily only, no Weekly confirm + no 60F trigger):
+
+| | |
+|---|---|
+| **When to use** | User requests single-period analysis without multi-level data |
+| **Behavior** | GATE 1 auto-passes with `trigger_status = "missing"` and `approximation_loss = "high"` |
+| **Effect** | Action ceiling auto-set to `observe`; structural analysis still produced but no entry/exit actions generated |
+| **Declaration** | Set `trigger_level = None` or omit it to signal single-level intent |
+| **Warning** | Single-level analysis is inherently incomplete — multi-level recursion is the standard for strict mode |
 
 ### GATE 2: structure_gate
 
