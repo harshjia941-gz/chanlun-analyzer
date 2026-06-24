@@ -1,0 +1,920 @@
+{
+  "summary": {
+    "total_klines": 252,
+    "after_inclusion": 192,
+    "merged_count": 60,
+    "fractal_count": 89,
+    "pen_count": 31,
+    "segment_count": 3,
+    "pivot_count": 1,
+    "divergence_count": 0,
+    "buy_sell_point_count": 0
+  },
+  "fractals": [
+    {
+      "index": 3,
+      "type": "top",
+      "value": 158.71,
+      "high": 158.71,
+      "low": 155.96
+    },
+    {
+      "index": 4,
+      "type": "bottom",
+      "value": 151.49,
+      "high": 157.2,
+      "low": 151.49
+    },
+    {
+      "index": 6,
+      "type": "top",
+      "value": 160.98,
+      "high": 160.98,
+      "low": 157.77
+    },
+    {
+      "index": 7,
+      "type": "bottom",
+      "value": 157.34,
+      "high": 159.31,
+      "low": 157.34
+    },
+    {
+      "index": 11,
+      "type": "top",
+      "value": 167.89,
+      "high": 167.89,
+      "low": 163.47
+    },
+    {
+      "index": 12,
+      "type": "bottom",
+      "value": 162.02,
+      "high": 165.49,
+      "low": 162.02
+    },
+    {
+      "index": 13,
+      "type": "top",
+      "value": 172.4,
+      "high": 172.4,
+      "low": 169.2
+    },
+    {
+      "index": 14,
+      "type": "bottom",
+      "value": 168.9,
+      "high": 171.75,
+      "low": 168.9
+    },
+    {
+      "index": 16,
+      "type": "top",
+      "value": 174.25,
+      "high": 174.25,
+      "low": 171.26
+    },
+    {
+      "index": 18,
+      "type": "bottom",
+      "value": 164.58,
+      "high": 171.26,
+      "low": 164.58
+    },
+    {
+      "index": 23,
+      "type": "top",
+      "value": 183.3,
+      "high": 183.3,
+      "low": 176.04
+    },
+    {
+      "index": 24,
+      "type": "bottom",
+      "value": 170.89,
+      "high": 176.54,
+      "low": 170.89
+    },
+    {
+      "index": 27,
+      "type": "top",
+      "value": 183.88,
+      "high": 183.88,
+      "low": 180.4
+    },
+    {
+      "index": 29,
+      "type": "bottom",
+      "value": 178.04,
+      "high": 181.9,
+      "low": 178.04
+    },
+    {
+      "index": 30,
+      "type": "top",
+      "value": 182.94,
+      "high": 182.94,
+      "low": 180.59
+    },
+    {
+      "index": 32,
+      "type": "bottom",
+      "value": 168.8,
+      "high": 176.0,
+      "low": 168.8
+    },
+    {
+      "index": 36,
+      "type": "top",
+      "value": 184.47,
+      "high": 184.47,
+      "low": 179.1
+    },
+    {
+      "index": 38,
+      "type": "bottom",
+      "value": 167.22,
+      "high": 172.38,
+      "low": 167.22
+    },
+    {
+      "index": 39,
+      "type": "top",
+      "value": 172.41,
+      "high": 172.41,
+      "low": 169.41
+    },
+    {
+      "index": 40,
+      "type": "bottom",
+      "value": 164.07,
+      "high": 169.03,
+      "low": 164.07
+    },
+    {
+      "index": 43,
+      "type": "top",
+      "value": 180.28,
+      "high": 180.28,
+      "low": 176.48
+    },
+    {
+      "index": 46,
+      "type": "bottom",
+      "value": 168.41,
+      "high": 173.2,
+      "low": 168.41
+    },
+    {
+      "index": 48,
+      "type": "top",
+      "value": 184.55,
+      "high": 184.55,
+      "low": 176.21
+    },
+    {
+      "index": 49,
+      "type": "bottom",
+      "value": 173.13,
+      "high": 179.77,
+      "low": 173.13
+    },
+    {
+      "index": 53,
+      "type": "top",
+      "value": 191.05,
+      "high": 191.05,
+      "low": 188.06
+    },
+    {
+      "index": 55,
+      "type": "bottom",
+      "value": 183.33,
+      "high": 187.23,
+      "low": 183.33
+    },
+    {
+      "index": 58,
+      "type": "top",
+      "value": 195.62,
+      "high": 195.62,
+      "low": 191.06
+    },
+    {
+      "index": 60,
+      "type": "bottom",
+      "value": 177.29,
+      "high": 183.28,
+      "low": 177.29
+    },
+    {
+      "index": 62,
+      "type": "top",
+      "value": 185.2,
+      "high": 185.2,
+      "low": 181.73
+    },
+    {
+      "index": 63,
+      "type": "bottom",
+      "value": 176.76,
+      "high": 182.79,
+      "low": 176.76
+    },
+    {
+      "index": 68,
+      "type": "top",
+      "value": 212.19,
+      "high": 212.19,
+      "low": 204.78
+    },
+    {
+      "index": 69,
+      "type": "bottom",
+      "value": 201.41,
+      "high": 206.16,
+      "low": 201.41
+    },
+    {
+      "index": 71,
+      "type": "top",
+      "value": 211.34,
+      "high": 211.34,
+      "low": 205.56
+    },
+    {
+      "index": 75,
+      "type": "bottom",
+      "value": 178.91,
+      "high": 188.32,
+      "low": 178.91
+    },
+    {
+      "index": 76,
+      "type": "top",
+      "value": 199.94,
+      "high": 199.94,
+      "low": 193.79
+    },
+    {
+      "index": 80,
+      "type": "bottom",
+      "value": 179.65,
+      "high": 184.8,
+      "low": 179.65
+    },
+    {
+      "index": 81,
+      "type": "top",
+      "value": 196.0,
+      "high": 196.0,
+      "low": 182.83
+    },
+    {
+      "index": 83,
+      "type": "bottom",
+      "value": 169.55,
+      "high": 178.16,
+      "low": 169.55
+    },
+    {
+      "index": 84,
+      "type": "top",
+      "value": 182.91,
+      "high": 182.91,
+      "low": 178.24
+    },
+    {
+      "index": 85,
+      "type": "bottom",
+      "value": 173.68,
+      "high": 179.29,
+      "low": 173.68
+    },
+    {
+      "index": 86,
+      "type": "top",
+      "value": 185.66,
+      "high": 185.66,
+      "low": 180.0
+    },
+    {
+      "index": 87,
+      "type": "bottom",
+      "value": 179.11,
+      "high": 182.45,
+      "low": 179.11
+    },
+    {
+      "index": 90,
+      "type": "top",
+      "value": 188.0,
+      "high": 188.0,
+      "low": 183.32
+    },
+    {
+      "index": 92,
+      "type": "bottom",
+      "value": 174.62,
+      "high": 178.42,
+      "low": 174.62
+    },
+    {
+      "index": 93,
+      "type": "top",
+      "value": 178.49,
+      "high": 178.49,
+      "low": 174.9
+    },
+    {
+      "index": 94,
+      "type": "bottom",
+      "value": 170.31,
+      "high": 176.13,
+      "low": 170.31
+    },
+    {
+      "index": 99,
+      "type": "top",
+      "value": 192.69,
+      "high": 192.69,
+      "low": 188.0
+    },
+    {
+      "index": 100,
+      "type": "bottom",
+      "value": 185.91,
+      "high": 188.76,
+      "low": 185.91
+    },
+    {
+      "index": 102,
+      "type": "top",
+      "value": 193.63,
+      "high": 193.63,
+      "low": 188.26
+    },
+    {
+      "index": 106,
+      "type": "bottom",
+      "value": 183.02,
+      "high": 186.34,
+      "low": 183.02
+    },
+    {
+      "index": 107,
+      "type": "top",
+      "value": 188.11,
+      "high": 188.11,
+      "low": 183.4
+    },
+    {
+      "index": 108,
+      "type": "bottom",
+      "value": 180.8,
+      "high": 184.46,
+      "low": 180.8
+    },
+    {
+      "index": 109,
+      "type": "top",
+      "value": 190.44,
+      "high": 190.44,
+      "low": 186.33
+    },
+    {
+      "index": 110,
+      "type": "bottom",
+      "value": 177.61,
+      "high": 182.38,
+      "low": 177.61
+    },
+    {
+      "index": 113,
+      "type": "top",
+      "value": 189.6,
+      "high": 189.6,
+      "low": 186.82
+    },
+    {
+      "index": 114,
+      "type": "bottom",
+      "value": 185.7,
+      "high": 189.12,
+      "low": 185.7
+    },
+    {
+      "index": 115,
+      "type": "top",
+      "value": 194.49,
+      "high": 194.49,
+      "low": 189.84
+    },
+    {
+      "index": 119,
+      "type": "bottom",
+      "value": 171.03,
+      "high": 176.82,
+      "low": 171.03
+    },
+    {
+      "index": 121,
+      "type": "top",
+      "value": 193.66,
+      "high": 193.66,
+      "low": 188.77
+    },
+    {
+      "index": 124,
+      "type": "bottom",
+      "value": 179.18,
+      "high": 187.15,
+      "low": 179.18
+    },
+    {
+      "index": 125,
+      "type": "top",
+      "value": 190.37,
+      "high": 190.37,
+      "low": 186.76
+    },
+    {
+      "index": 126,
+      "type": "bottom",
+      "value": 185.66,
+      "high": 188.43,
+      "low": 185.66
+    },
+    {
+      "index": 128,
+      "type": "top",
+      "value": 193.95,
+      "high": 193.95,
+      "low": 189.58
+    },
+    {
+      "index": 129,
+      "type": "bottom",
+      "value": 187.4,
+      "high": 193.77,
+      "low": 187.4
+    },
+    {
+      "index": 130,
+      "type": "top",
+      "value": 197.63,
+      "high": 197.63,
+      "low": 193.79
+    },
+    {
+      "index": 132,
+      "type": "bottom",
+      "value": 174.64,
+      "high": 180.9,
+      "low": 174.64
+    },
+    {
+      "index": 133,
+      "type": "top",
+      "value": 184.7,
+      "high": 184.7,
+      "low": 180.06
+    },
+    {
+      "index": 135,
+      "type": "bottom",
+      "value": 175.56,
+      "high": 182.76,
+      "low": 175.56
+    },
+    {
+      "index": 137,
+      "type": "top",
+      "value": 187.62,
+      "high": 187.62,
+      "low": 184.45
+    },
+    {
+      "index": 138,
+      "type": "bottom",
+      "value": 179.94,
+      "high": 184.94,
+      "low": 179.94
+    },
+    {
+      "index": 139,
+      "type": "top",
+      "value": 188.88,
+      "high": 188.88,
+      "low": 181.68
+    },
+    {
+      "index": 142,
+      "type": "bottom",
+      "value": 171.72,
+      "high": 178.26,
+      "low": 171.72
+    },
+    {
+      "index": 143,
+      "type": "top",
+      "value": 178.37,
+      "high": 178.37,
+      "low": 174.76
+    },
+    {
+      "index": 144,
+      "type": "bottom",
+      "value": 173.98,
+      "high": 176.22,
+      "low": 173.98
+    },
+    {
+      "index": 145,
+      "type": "top",
+      "value": 181.22,
+      "high": 181.22,
+      "low": 176.85
+    },
+    {
+      "index": 148,
+      "type": "bottom",
+      "value": 164.27,
+      "high": 169.45,
+      "low": 164.27
+    },
+    {
+      "index": 156,
+      "type": "top",
+      "value": 202.75,
+      "high": 202.75,
+      "low": 199.27
+    },
+    {
+      "index": 157,
+      "type": "bottom",
+      "value": 197.22,
+      "high": 202.5,
+      "low": 197.22
+    },
+    {
+      "index": 159,
+      "type": "top",
+      "value": 216.83,
+      "high": 216.83,
+      "low": 208.2
+    },
+    {
+      "index": 163,
+      "type": "bottom",
+      "value": 194.74,
+      "high": 200.24,
+      "low": 194.74
+    },
+    {
+      "index": 170,
+      "type": "top",
+      "value": 236.54,
+      "high": 236.54,
+      "low": 229.3
+    },
+    {
+      "index": 173,
+      "type": "bottom",
+      "value": 217.91,
+      "high": 224.48,
+      "low": 217.91
+    },
+    {
+      "index": 174,
+      "type": "top",
+      "value": 227.4,
+      "high": 227.4,
+      "low": 220.5
+    },
+    {
+      "index": 177,
+      "type": "bottom",
+      "value": 208.78,
+      "high": 214.15,
+      "low": 208.78
+    },
+    {
+      "index": 180,
+      "type": "top",
+      "value": 232.28,
+      "high": 232.28,
+      "low": 221.35
+    },
+    {
+      "index": 183,
+      "type": "bottom",
+      "value": 199.34,
+      "high": 205.66,
+      "low": 199.34
+    },
+    {
+      "index": 185,
+      "type": "top",
+      "value": 212.71,
+      "high": 212.71,
+      "low": 208.34
+    },
+    {
+      "index": 187,
+      "type": "bottom",
+      "value": 203.08,
+      "high": 209.21,
+      "low": 203.08
+    },
+    {
+      "index": 189,
+      "type": "top",
+      "value": 213.99,
+      "high": 213.99,
+      "low": 207.72
+    }
+  ],
+  "pens": [
+    {
+      "start_idx": 3,
+      "end_idx": 7,
+      "direction": "down",
+      "start_value": 158.71,
+      "end_value": 157.34
+    },
+    {
+      "start_idx": 7,
+      "end_idx": 11,
+      "direction": "up",
+      "start_value": 157.34,
+      "end_value": 167.89
+    },
+    {
+      "start_idx": 11,
+      "end_idx": 18,
+      "direction": "down",
+      "start_value": 167.89,
+      "end_value": 164.58
+    },
+    {
+      "start_idx": 18,
+      "end_idx": 23,
+      "direction": "up",
+      "start_value": 164.58,
+      "end_value": 183.3
+    },
+    {
+      "start_idx": 23,
+      "end_idx": 29,
+      "direction": "down",
+      "start_value": 183.3,
+      "end_value": 178.04
+    },
+    {
+      "start_idx": 29,
+      "end_idx": 36,
+      "direction": "up",
+      "start_value": 178.04,
+      "end_value": 184.47
+    },
+    {
+      "start_idx": 36,
+      "end_idx": 40,
+      "direction": "down",
+      "start_value": 184.47,
+      "end_value": 164.07
+    },
+    {
+      "start_idx": 40,
+      "end_idx": 43,
+      "direction": "up",
+      "start_value": 164.07,
+      "end_value": 180.28
+    },
+    {
+      "start_idx": 43,
+      "end_idx": 46,
+      "direction": "down",
+      "start_value": 180.28,
+      "end_value": 168.41
+    },
+    {
+      "start_idx": 46,
+      "end_idx": 53,
+      "direction": "up",
+      "start_value": 168.41,
+      "end_value": 191.05
+    },
+    {
+      "start_idx": 53,
+      "end_idx": 60,
+      "direction": "down",
+      "start_value": 191.05,
+      "end_value": 177.29
+    },
+    {
+      "start_idx": 60,
+      "end_idx": 68,
+      "direction": "up",
+      "start_value": 177.29,
+      "end_value": 212.19
+    },
+    {
+      "start_idx": 68,
+      "end_idx": 75,
+      "direction": "down",
+      "start_value": 212.19,
+      "end_value": 178.91
+    },
+    {
+      "start_idx": 75,
+      "end_idx": 81,
+      "direction": "up",
+      "start_value": 178.91,
+      "end_value": 196.0
+    },
+    {
+      "start_idx": 81,
+      "end_idx": 85,
+      "direction": "down",
+      "start_value": 196.0,
+      "end_value": 173.68
+    },
+    {
+      "start_idx": 85,
+      "end_idx": 90,
+      "direction": "up",
+      "start_value": 173.68,
+      "end_value": 188.0
+    },
+    {
+      "start_idx": 90,
+      "end_idx": 94,
+      "direction": "down",
+      "start_value": 188.0,
+      "end_value": 170.31
+    },
+    {
+      "start_idx": 94,
+      "end_idx": 99,
+      "direction": "up",
+      "start_value": 170.31,
+      "end_value": 192.69
+    },
+    {
+      "start_idx": 99,
+      "end_idx": 106,
+      "direction": "down",
+      "start_value": 192.69,
+      "end_value": 183.02
+    },
+    {
+      "start_idx": 106,
+      "end_idx": 113,
+      "direction": "up",
+      "start_value": 183.02,
+      "end_value": 189.6
+    },
+    {
+      "start_idx": 113,
+      "end_idx": 119,
+      "direction": "down",
+      "start_value": 189.6,
+      "end_value": 171.03
+    },
+    {
+      "start_idx": 119,
+      "end_idx": 125,
+      "direction": "up",
+      "start_value": 171.03,
+      "end_value": 190.37
+    },
+    {
+      "start_idx": 125,
+      "end_idx": 129,
+      "direction": "down",
+      "start_value": 190.37,
+      "end_value": 187.4
+    },
+    {
+      "start_idx": 129,
+      "end_idx": 137,
+      "direction": "up",
+      "start_value": 187.4,
+      "end_value": 187.62
+    },
+    {
+      "start_idx": 137,
+      "end_idx": 142,
+      "direction": "down",
+      "start_value": 187.62,
+      "end_value": 171.72
+    },
+    {
+      "start_idx": 142,
+      "end_idx": 156,
+      "direction": "up",
+      "start_value": 171.72,
+      "end_value": 202.75
+    },
+    {
+      "start_idx": 156,
+      "end_idx": 163,
+      "direction": "down",
+      "start_value": 202.75,
+      "end_value": 194.74
+    },
+    {
+      "start_idx": 163,
+      "end_idx": 170,
+      "direction": "up",
+      "start_value": 194.74,
+      "end_value": 236.54
+    },
+    {
+      "start_idx": 170,
+      "end_idx": 177,
+      "direction": "down",
+      "start_value": 236.54,
+      "end_value": 208.78
+    },
+    {
+      "start_idx": 177,
+      "end_idx": 180,
+      "direction": "up",
+      "start_value": 208.78,
+      "end_value": 232.28
+    },
+    {
+      "start_idx": 180,
+      "end_idx": 187,
+      "direction": "down",
+      "start_value": 232.28,
+      "end_value": 203.08
+    }
+  ],
+  "segments": [
+    {
+      "start_idx": 0,
+      "end_idx": 6,
+      "direction": "down",
+      "high": 184.47,
+      "low": 157.34
+    },
+    {
+      "start_idx": 7,
+      "end_idx": 13,
+      "direction": "up",
+      "high": 212.19,
+      "low": 164.07
+    },
+    {
+      "start_idx": 14,
+      "end_idx": 30,
+      "direction": "down",
+      "high": 236.54,
+      "low": 170.31
+    }
+  ],
+  "pivots": [
+    {
+      "start_seg": 0,
+      "end_seg": 2,
+      "ZG": 184.47,
+      "ZD": 170.31,
+      "GG": 236.54,
+      "DD": 157.34,
+      "seg_count": 3
+    }
+  ],
+  "divergence": [],
+  "buy_sell_points": [],
+  "compute_status": {
+    "pipeline_version": "2.0",
+    "inclusion_done": true,
+    "fractals_done": true,
+    "strokes_done": true,
+    "segments_done": true,
+    "centers_done": true,
+    "divergence_done": true,
+    "buy_sell_points_done": true,
+    "warnings": [
+      "last_segment_unconfirmed"
+    ],
+    "data_quality": {
+      "klines_count": 252,
+      "after_inclusion_count": 192,
+      "missing_sessions": 0,
+      "sufficient": true
+    }
+  },
+  "_context": {
+    "symbol": "NVDA",
+    "start": "2025-06-24",
+    "end": "2026-06-24",
+    "last_close": 200.22999572753906,
+    "period_high": 236.5399932861328,
+    "period_low": 145.5
+  }
+}
