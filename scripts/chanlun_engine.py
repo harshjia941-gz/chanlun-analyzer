@@ -1258,6 +1258,36 @@ def analyze(df: pd.DataFrame, pen_mode: str = "new") -> dict:
 
 
 # ═══════════════════════════════════════════════════════════════════════
+# Convenience: analyze_symbol
+# ═══════════════════════════════════════════════════════════════════════
+
+def analyze_symbol(symbol: str, period: str = "1y", interval: str = "1d",
+                    pen_mode: str = "new") -> dict:
+    """
+    一键拉取 yfinance 数据并执行缠论分析。
+
+    Parameters
+    ----------
+    symbol : 股票代码 (e.g. 'NVDA', 'AAPL')
+    period : yfinance period ('1y', '6mo', '2y', etc.)
+    interval : yfinance interval ('1d', '1wk', '60m', etc.)
+    pen_mode : 'new' (default) | 'old'
+
+    Returns
+    -------
+    dict : same as analyze() output
+    """
+    import yfinance as yf
+    raw = yf.download(symbol, period=period, interval=interval, progress=False)
+    # yfinance >= 0.28 may return MultiIndex columns
+    if isinstance(raw.columns, pd.MultiIndex):
+        raw.columns = raw.columns.get_level_values(0)
+    data = raw[["Open", "High", "Low", "Close", "Volume"]].reset_index()
+    data.columns = ["date", "open", "high", "low", "close", "volume"]
+    return analyze(data, pen_mode=pen_mode)
+
+
+# ═══════════════════════════════════════════════════════════════════════
 # CLI 入口
 # ═══════════════════════════════════════════════════════════════════════
 

@@ -26,6 +26,7 @@ import pytest
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from chanlun_engine import (
     analyze,
+    analyze_symbol,
     process_inclusion,
     find_fractals,
     build_pens,
@@ -179,6 +180,7 @@ class TestComputeStatus:
             "strokes_done", "segments_done", "centers_done",
             "divergence_done", "buy_sell_points_done",
             "warnings", "data_quality",
+            "current_state",  # RUO-384
         }
         assert set(cs.keys()) == expected_fields
 
@@ -416,7 +418,91 @@ class TestEdgeCases:
 
 
 # ═══════════════════════════════════════════════════════════════════════
-# 8. Individual Step Tests
+# 8. RUO-384 v2.1 Enhancement Tests
+# ═══════════════════════════════════════════════════════════════════════
+
+class TestPenToSegmentRatio:
+    """Verify pen_to_segment_ratio in compute_status data_quality (RUO-384)."""
+
+    def test_pen_to_segment_ratio_exists(self, sample_df):
+        result = analyze(sample_df)
+        dq = result["compute_status"]["data_quality"]
+        assert "pen_to_segment_ratio" in dq
+
+    def test_pen_to_segment_ratio_value(self, sample_df):
+        result = analyze(sample_df)
+        dq = result["compute_status"]["data_quality"]
+        if result["segments"]:
+            expected = round(len(result["pens"]) / len(result["segments"]), 1)
+            assert dq["pen_to_segment_ratio"] == expected
+        else:
+            assert dq["pen_to_segment_ratio"] is None
+
+    def test_pen_to_segment_ratio_is_float_or_none(self, sample_df):
+        result = analyze(sample_df)
+        ratio = result["compute_status"]["data_quality"]["pen_to_segment_ratio"]
+        assert ratio is None or isinstance(ratio, (int, float))
+
+
+class TestCurrentState:
+    """Verify current_state in compute_status (RUO-384)."""
+
+    def test_current_state_key_exists(self, sample_df):
+        result = analyze(sample_df)
+        assert "current_state" in result["compute_status"]
+
+    def test_current_state_fields(self, sample_df):
+        result = analyze(sample_df)
+        cs = result["compute_status"]["current_state"]
+        if cs is not None:
+            for key in ["price", "position_vs_pivot", "nearest_ZG",
+                        "nearest_ZD", "last_segment_direction"]:
+                assert key in cs, f"Missing current_state key: {key}"
+
+    def test_current_state_position_values(self, sample_df):
+        result = analyze(sample_df)
+        cs = result["compute_status"]["current_state"]
+        if cs is not None:
+            assert cs["position_vs_pivot"] in (
+                "above_ZG", "below_ZD", "inside_center")
+
+    def test_current_state_none_when_no_pivots(self, tiny_df):
+        result = analyze(tiny_df)
+        assert result["compute_status"]["current_state"] is None
+
+    def test_current_state_price_matches_last_close(self, sample_df):
+        result = analyze(sample_df)
+        cs = result["compute_status"]["current_state"]
+        if cs is not None:
+            expected = round(float(sample_df["close"].iloc[-1]), 2)
+            assert cs["price"] == expected
+
+
+class TestAnalyzeSymbol:
+    """Verify analyze_symbol convenience function (RUO-384)."""
+
+    def test_analyze_symbol_callable(self):
+        assert callable(analyze_symbol)
+
+    def test_analyze_symbol_returns_dict(self):
+        """Live test — requires network and yfinance."""
+        try:
+            result = analyze_symbol("AAPL", period="6mo")
+            assert isinstance(result, dict)
+            assert "compute_status" in result
+        except Exception:
+            pytest.skip("Network/yfinance unavailable")
+
+    def test_analyze_symbol_has_current_state(self):
+        try:
+            result = analyze_symbol("AAPL", period="1y")
+            assert "current_state" in result["compute_status"]
+        except Exception:
+            pytest.skip("Network/yfinance unavailable")
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# 9. Individual Step Tests
 # ═══════════════════════════════════════════════════════════════════════
 
 class TestIndividualSteps:

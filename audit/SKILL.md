@@ -13,6 +13,11 @@ INPUT:  compute_result (from compute layer)
         trade_level, confirm_level, trigger_level (declared by operator)
 OUTPUT: audit_report (JSON)
 
+# Check fast-path shortcuts first
+IF shortcut_triggered(compute_result):
+    RETURN fast_path_result
+
+# Normal gate execution
 FOR gate IN [1..8]:
     result = run_gate(gate, compute_result, levels)
     IF result.fail:
@@ -25,6 +30,8 @@ RETURN audit_report
 ```
 
 **Hard rule**: Gates execute in order 1→8. If GATE 1 fails, do not proceed — return immediately with `definition_mode: "untradable_unclear"`.
+
+**Fast-path rule**: Check shortcuts BEFORE GATE 3. If triggered, skip directly to action ceiling determination — see Fast-Path Shortcuts section below.
 
 ---
 
@@ -63,6 +70,40 @@ RETURN audit_report
 | **Classification logic** | If price inside latest pivot [ZD, ZG] → `center_oscillation` or `center_extension` (based on extension_count). If price left pivot upward → `center_breakout` or `uptrend`. If price left pivot downward → `downtrend`. If ambiguous → `untradable_unclear`. |
 | **Pass** | State is classifiable into a non-`unclear` label |
 | **Fail** | `untradable_unclear`; action ceiling = `observe` |
+
+---
+
+### ⚡ Fast-Path Shortcuts
+
+These shortcuts apply BEFORE executing GATE 4-8. If triggered, skip directly to deciding action ceiling.
+
+| Condition | Trigger | Action | Rationale |
+|-----------|---------|--------|-----------|
+| `divergence_count == 0` AND `buy_sell_point_count == 0` | No signal at all | Skip GATE 4-7; `action_ceiling = observe`; `definition_mode` unchanged | Nothing to validate. Structure exists but no actionable entry/exit. |
+| `pivot_count == 0` | No center formed | Skip GATE 3-7; `definition_mode = structure_proxy`; `action_ceiling = observe` | Without a pivot, there is no center to classify or diverge from. |
+| `pivot_count == 1` AND `divergence_count == 0` | Single pivot, no trend | Auto-pass GATE 4 (divergence needs ≥2 displaced pivots for trend); continue GATE 5-7 normally | A single pivot cannot form trend divergence; comparison gate is N/A. |
+
+**Fast-Path Decision Flow:**
+
+```
+IF divergence_count == 0 AND bsp_count == 0:
+    → Skip GATE 4-5-6-7 (auto-pass)
+    → ceiling = observe (no signal to act on)
+    → rationale: "Structure exists but no actionable signal"
+
+ELSE IF pivot_count == 0:
+    → definition_mode = structure_proxy
+    → ceiling = observe
+    → rationale: "No center formed; structure incomplete"
+
+ELSE IF pivot_count == 1 AND divergence_count == 0:
+    → GATE 4 auto-PASS (single pivot, no trend comparison possible)
+    → Continue GATE 5-6-7-8 normally
+```
+
+**Fast-path is NOT a downgrade** — `definition_mode` is preserved (except for 0-pivot case). It simply short-circuits unnecessary gate evaluation when the structural prerequisites for those gates don't exist.
+
+---
 
 ### GATE 4: comparison_gate
 
