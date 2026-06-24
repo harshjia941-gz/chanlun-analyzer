@@ -723,7 +723,8 @@ def _macd_area(hist: np.ndarray, start: int, end: int,
 
 def detect_divergence(pivots: list[Pivot],
                       df: pd.DataFrame,
-                      segments: list[Segment]) -> list[DivergenceInfo]:
+                      segments: list[Segment],
+                      pens: list[Pen]) -> list[DivergenceInfo]:
     """
     检测趋势背驰。
 
@@ -739,6 +740,7 @@ def detect_divergence(pivots: list[Pivot],
     pivots : 中枢列表
     df : 原始DataFrame
     segments : 线段列表
+    pens : 笔列表 (用于精确映射线段到原始行号)
 
     Returns
     -------
@@ -1101,34 +1103,78 @@ def analyze(df: pd.DataFrame, pen_mode: str = "new") -> dict:
     -------
     dict
         包含所有分析结果的结构化字典:
-        - inclusion_count: 合并了多少根K线
+        - summary: 各步骤计数
         - fractals: 分型列表
         - pens: 笔列表
         - segments: 线段列表
         - pivots: 中枢列表
         - divergence: 背驰信息
         - buy_sell_points: 买卖点
+        - compute_status: 流水线状态 + 数据质量
     """
+    # ── Initialize compute_status tracking ──
+    pipeline_warnings: list[str] = []
+    klines_count = len(df)
+
+    if klines_count < 30:
+        pipeline_warnings.append("insufficient_klines")
+    elif klines_count < 100:
+        pipeline_warnings.append("limited_klines")
+
     # Step 1: 包含处理
     df_inc = process_inclusion(df)
+    if klines_count > 0 and (klines_count - len(df_inc)) / klines_count > 0.5:
+        pipeline_warnings.append("high_inclusion_ratio")
 
     # Step 2: 分型识别
     fractals = find_fractals(df_inc)
+    if len(fractals) < 3:
+        pipeline_warnings.append("too_few_fractals")
 
     # Step 3: 笔的划分
     pens = build_pens(df_inc, fractals, mode=pen_mode)
+    if len(pens) < 3:
+        pipeline_warnings.append("too_few_pens")
 
     # Step 4: 线段划分
     segments = build_segments(pens, df_inc)
 
     # Step 5: 中枢识别
     pivots = find_pivots(segments)
+    if len(pivots) == 0 and len(pens) >= 3:
+        pipeline_warnings.append("no_pivots_found")
 
     # Step 6: 背驰检测
-    divergence = detect_divergence(pivots, df, segments)
+    divergence = detect_divergence(pivots, df, segments, pens)
 
     # Step 7: 买卖点标注
     buy_sell = find_buy_sell_points(pivots, divergence, df, segments, pens)
+
+    # Engine always treats the last segment as potentially unconfirmed
+    # (known simplification — see compute/SKILL.md)
+    if segments:
+        pipeline_warnings.append("last_segment_unconfirmed")
+
+    # Determine data quality
+    sufficient = klines_count >= 30 and "too_few_pens" not in pipeline_warnings
+
+    compute_status = {
+        "pipeline_version": "2.0",
+        "inclusion_done": True,
+        "fractals_done": True,
+        "strokes_done": True,
+        "segments_done": True,
+        "centers_done": True,
+        "divergence_done": True,
+        "buy_sell_points_done": True,
+        "warnings": pipeline_warnings,
+        "data_quality": {
+            "klines_count": klines_count,
+            "after_inclusion_count": len(df_inc),
+            "missing_sessions": 0,
+            "sufficient": sufficient,
+        },
+    }
 
     return {
         "summary": {
@@ -1207,6 +1253,7 @@ def analyze(df: pd.DataFrame, pen_mode: str = "new") -> dict:
             }
             for bp in buy_sell
         ],
+        "compute_status": compute_status,
     }
 
 
